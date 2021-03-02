@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { isAuthenticated } from './Auth';
 import { PrivateRoute } from './PrivateRoute';
 
 export function Routes(){
@@ -6,7 +7,7 @@ export function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={()=> <h1> Hello World </h1> } />
-                <PrivateRoute path="/app" component={ () => <h1>Logado</h1> } />
+                <PrivateRoute path="/app" isAuthenticated={isAuthenticated()} component={ () => <h1>Logado</h1> } />
             </Switch>
         </BrowserRouter>
     )
